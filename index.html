@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashraf-Ali - Digital Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg-deep: #060a14;
+            --navy-800: #0b1120;
+            --navy-700: #131c30;
+            --navy-600: #1c2942;
+            --cyan: #22d3ee;
+            --blue: #3b82f6;
+            --text-primary: #eef2f8;
+            --text-muted: #8494ad;
+            --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 20% 0%, rgba(34,211,238,0.10), transparent 45%),
+                radial-gradient(circle at 85% 100%, rgba(59,130,246,0.12), transparent 50%),
+                var(--bg-deep);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 32px 14px;
+        }
+
+        /* Rotating glow frame around the whole card */
+        .glow-frame {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            border-radius: 24px;
+            padding: 3px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.55);
+        }
+
+        .glow-spin {
+            position: absolute;
+            inset: -60%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                var(--cyan) 60deg,
+                var(--blue) 140deg,
+                transparent 220deg,
+                transparent 300deg,
+                var(--cyan) 360deg
+            );
+            animation: spin 5s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Main Card Container */
+        .card {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(180deg, var(--navy-700) 0%, var(--navy-800) 100%);
+            width: 100%;
+            border-radius: 21px;
+            overflow: hidden;
+        }
+
+        /* Header Banner */
+        .cover-bg {
+            height: 140px;
+            background:
+                linear-gradient(180deg, rgba(6,10,20,0.35) 0%, rgba(6,10,20,0.75) 100%),
+                linear-gradient(135deg, rgba(34,211,238,0.16) 0%, rgba(59,130,246,0.08) 55%, transparent 100%),
+                url('https://raw.githubusercontent.com/ashrafalix29/mycard/main/9a966341-ec91-4452-ab12-a78134fc2322.jpg_202609081809.jpeg') center 25% / cover no-repeat,
+                var(--navy-700);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+            background-size: 26px 26px;
+            mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent);
+        }
+
+        .cover-tag {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.02em;
+            color: var(--cyan);
+            background: rgba(6,10,20,0.55);
+            border: 1px solid rgba(34,211,238,0.35);
+            padding: 4px 9px;
+            border-radius: 7px;
+        }
+
+        /* gemini code  */
+
+/* ১. ব্লিংকিং অ্যানিমেশন তৈরি */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ২. আপনার মূল .cover-tag কোড */
+.cover-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--cyan);
+  background: rgba(6,10,20,0.55);
+  border: 1px solid rgba(34,211,238,0.35);
+  padding: .2rem .5rem;
+  border-radius: 7px;
+  
+  /* টেক্সট ও ডট এক লাইনে সেন্টার রাখার জন্য */
+  display: inline-flex;
+  align-items: center;
+  vertical-align: center;
+  gap: 3px;
+}
+
+/* ৩. বাম পাশের গ্রিন ডট */
+.cover-tag::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background-color: #22c55e; /* সবুজ রঙ */
+  border-radius: 50%;
+  box-shadow: 0 0 6px #22c55e; /* গ্লো (Glow) ইফেক্ট */
+  animation: blink 1.5s infinite ease-in-out; /* অনবরত ব্লিংক করবে */
+}
+
+
+
+        /* Avatar */
+        .avatar-container {
+            position: absolute;
+            top: 88px;
+            left: 20px;
+        }
+
+        .avatar-ring {
+            width: 98px;
+            height: 98px;
+            border-radius: 50%;
+            padding: 3px;
+            background: conic-gradient(from 200deg, var(--cyan), var(--blue), var(--cyan));
+            box-shadow: 0 0 22px rgba(34,211,238,0.35);
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--navy-800);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 3px solid var(--navy-700);
+        }
+
+        .avatar-placeholder {
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.25;
+         
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            scale: 1.35;
+            object-position: -.1rem 0.3rem;
+        }
+
+        /* Profile Info */
+        .profile-info {
+            padding: 46px 20px 6px 20px;
+        }
+
+        .profile-info h2 {
+            color: var(--text-primary);
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 6px;
+        }
+
+        .rainbow-name {
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 3s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+
+        .profile-info .role-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-info p {
+            color: var(--text-muted);
+            font-size: 13.5px;
+            margin: 0px;
+        }
+
+        .role-row hr {
+            width: 1px;
+            height: 14px;
+            border: none;
+            background: rgba(255,255,255,0.14);
+            margin: 0;
+        }
+
+        .role-row p.code-chip {
+            font-family: var(--mono);
+            font-size: 11px;
+            background: rgba(251,191,36,0.08);
+            border: 1px solid rgba(251,191,36,0.25);
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .role-row p.code-chip span {
+            background: linear-gradient(270deg, #0062ff, #ffffff, #0062ff, #fef3c7, #0062ff);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            animation: chipShift 15s ease-in-out infinite;
+        }
+
+        @keyframes chipShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Grid Icons Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px 12px;
+            padding: 18px 20px 26px 20px;
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            outline: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .icon-box {
+            width: 68px;
+            height: 68px;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-primary);
+            background: var(--navy-600);
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .icon-box svg.brand-icon {
+            width: 26px;
+            height: 26px;
+        }
+
+        .corner-arrow {
+            position: absolute;
+            top: 7px;
+            right: 7px;
+            width: 12px;
+            height: 12px;
+            color: var(--text-primary);
+            opacity: 0;
+            transform: translate(-3px, 3px);
+            transition: all 0.25s ease;
+        }
+
+        .grid-item:hover .icon-box,
+        .grid-item:focus .icon-box,
+        .grid-item:active .icon-box {
+            transform: translateY(-4px);
+            border-color: var(--brand, var(--cyan));
+            box-shadow: 0 0 0 1px var(--brand, var(--cyan)), 0 10px 24px rgba(0,0,0,0.4), 0 0 18px color-mix(in srgb, var(--brand, var(--cyan)) 45%, transparent);
+        }
+
+        .grid-item:hover .corner-arrow {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        .grid-item span {
+            margin-top: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .icon-email    { --brand: #ea4335; }
+        .icon-linkedin { --brand: #0a66c2; }
+        .icon-github   { --brand: #8b98ac; }
+        .icon-x        { --brand: #7dd3fc; }
+
+        .icon-x:hover,
+        .grid-item:hover .icon-x {
+            box-shadow: 0 0 0 1px #f8fafc, 0 10px 24px rgba(0,0,0,0.4), 0 0 20px rgba(248,250,252,0.55);
+        }
+        .icon-facebook { --brand: #1877f2; }
+        .icon-instagram{ --brand: #e6683c; }
+        .icon-whatsapp { --brand: #25d366; }
+        .icon-youtube  { --brand: #ff0000; }
+        .icon-website  { --brand: #22d3ee; }
+
+        /* Footer */
+        .card-footer {
+            text-align: center;
+            padding: 1rem 1rem;
+            font-size: 10.5px;
+            color: #4b5875;
+            font-family: var(--mono);
+            border-top: 1px solid rgba(255, 254, 254, 0.101);
+
+        }
+        
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="glow-frame">
+        <div class="glow-spin"></div>
+
+        <div class="card">
+            <div class="cover-bg">
+                <span class="cover-tag">&lt;online/&gt;</span>
+            </div>
+
+            <div class="avatar-container">
+                <div class="avatar-ring">
+                    <div class="avatar">
+                        <img src="https://raw.githubusercontent.com/ashrafalix29/mycard/main/my%20name%20logo.jpeg" alt="Ashraf-Ali">
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-info">
+                
+                <div class="role-row" style="margin-top: 2%;">
+                    <p class="code-chip"><span>&lt;Ashraf-Ali/&gt;</span></p>
+                </div>
+                <div class="role-row" style="margin-top: 1%;">
+                    <p><u style=" font-weight: 300; text-underline-offset:.3rem;">Frontend Developer/Video Editor</u></p>
+                </div>
+            </div>
+
+            <div class="grid-container">
+
+                <a href="mailto:asjdg346@gmail.com" class="grid-item">
+                    <div class="icon-box icon-email">
+                        <svg class="corner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.2.3 7.8 6 7.8-6H4.2ZM20 7.9l-7.4 5.7a1 1 0 0 1-1.2 0L4 7.9v10.6c0 .28.22.5.5.5h15a.5.5 0 0 0 .5-.5V7.9Z"/></svg>
+                    </div>
+                    <span>Email</span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/ashraf-ali-8a8487415" target="_blank" class="grid-item">
+                    <div class="icon-box icon-linkedin">
+                        <svg class="corner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v10.75H3V9.75Zm6.5 0h3.83v1.47h.05c.53-1 1.85-2.06 3.8-2.06 4.07 0 4.82 2.68 4.82 6.16v6.18h-4v-5.48c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9v5.56h-4V9.75Z"/></svg>
+                    </div>
+                    <span>Linkedin</span>
+                </a>
+
+                <a href="https://github.com/ashrafalix29" target="_blank" class="grid-item">
+                    <div class="icon-box icon-github">
+                        <svg class="corner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.2c0 4.49 2.87 8.3 6.84 9.65.5.1.68-.22.68-.49 0-.24-.01-1.03-.01-1.87-2.78.61-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.9-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.2C22 6.58 17.52 2 12 2Z"/></svg>
+                    </div>
+                    <span>GitHub</span>
+                </a>
+
+                <a href="https://x.com/AshrafAli569797" target="_blank" class="grid-item">
+                    <div class="icon-box icon-x">
+                        <svg class="corner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 3h3.02l-6.6 7.54L22.5 21h-6.08l-4.76-6.23L6.2 21H3.17l7.06-8.07L2 3h6.24l4.3 5.7L18.24 3Zm-1.06 16.17h1.68L7.9 4.73H6.1l11.08 14.44Z"/></svg>
+                    </div>
+                    <span>X</span>
+                </a>
+
+                <a href="https://www.facebook.com/profile.php?id=100091871173632" target="_blank" class="grid-item">
+                    <div class="icon-box icon-facebook">
+                        <svg class="corner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.6h2.55l.38-2.96h-2.93V8.55c0-.86.24-1.44 1.47-1.44h1.57V4.46c-.27-.04-1.2-.12-2.28-.12-2.26 0-3.8 1.38-3.8 3.9v2.18H7.99v2.96h2.47V21h3.04Z"/></svg>
+                    </div>
+                    <span>Facebook</span>
+                </a>
+
+                <a href="https://www.instagram.com/ashraf679171" target="_blank" class="grid-item">
+                    <div class="icon-box icon-instagram">
+                        <svg class="corner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+                    </div>
+                    <span>Instagram</span>
+                </a>
+
+                <a href="https://wa.me/8801603597687" target="_blank" class="grid-item">
+                    <div class="icon-box icon-whatsapp">
+                        <svg class="corner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.06L2 22l5.1-1.34A10 10 0 1 0 12 2Zm5.62 14.2c-.24.67-1.36 1.29-1.88 1.34-.5.05-.98.24-3.29-.7-2.78-1.13-4.58-3.98-4.72-4.17-.14-.19-1.12-1.5-1.12-2.86 0-1.36.71-2.02.97-2.3.24-.26.54-.32.72-.32.18 0 .36 0 .52.01.17.01.4-.06.62.48.24.58.8 2.01.87 2.16.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.76 1.27 1.63 2.06 1.12 1.02 2.06 1.34 2.35 1.49.3.15.47.13.65-.08.17-.2.73-.86.93-1.15.19-.3.39-.24.65-.15.26.1 1.68.8 1.97.94.28.15.47.22.54.35.07.13.07.75-.16 1.4Z"/></svg>
+                    </div>
+                    <span>Whatsapp</span>
+                </a>
+
+                <a href="https://www.youtube.com/@Ashraf_ali_x_29" target="_blank" class="grid-item">
+                    <div class="icon-box icon-youtube">
+                        <svg class="corner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.2a2.75 2.75 0 0 0-1.94-1.95C17.9 4.75 12 4.75 12 4.75s-5.9 0-7.64.5A2.75 2.75 0 0 0 2.42 7.2 28.7 28.7 0 0 0 2 12a28.7 28.7 0 0 0 .42 4.8 2.75 2.75 0 0 0 1.94 1.95c1.74.5 7.64.5 7.64.5s5.9 0 7.64-.5a2.75 2.75 0 0 0 1.94-1.95c.3-1.58.44-3.19.42-4.8.02-1.61-.12-3.22-.42-4.8ZM10 15.02V8.98L15.5 12 10 15.02Z"/></svg>
+                    </div>
+                    <span>Youtube</span>
+                </a>
+
+                <a href="https://ashrafaliportfolio.vercel.app" target="_blank" class="grid-item">
+                    <div class="icon-box icon-website">
+                        <svg class="corner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.6 5.7 3.6 9s-1.2 6.4-3.6 9c-2.4-2.6-3.6-5.7-3.6-9s1.2-6.4 3.6-9Z"/></svg>
+                    </div>
+                    <span>Website</span>
+                </a>
+
+            </div>
+
+            <div class="card-footer" style="font-family: var(--mono); font-size: .2rem; color: #666;">
+                &copy; Ashraf-Ali all rights reserved
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
